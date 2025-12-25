@@ -8,29 +8,25 @@ const skills = [
     icon: Gamepad2,
     title: "Unreal Engine",
     description: "3+ Years Of Development Using Blueprints And C++",
-    level: 90,
-    tags: ["Blueprints", "C++", "Gameplay Systems"],
+    tags: ["Blueprints", "C++", "Gameplay Systems", "AI Behavior", "Animation"],
   },
   {
     icon: Code,
     title: "Unity",
     description: "Developed Several University Project Games Using C#",
-    level: 80,
-    tags: ["C#", "Game Jams", "Prototyping"],
+    tags: ["C#", "Game Jams", "Prototyping", "2D/3D", "Physics"],
   },
   {
     icon: Globe,
     title: "Web Development",
     description: "Developed an anime ranking site using Node.js, React and Firebase",
-    level: 70,
-    tags: ["React", "Node.js", "Firebase"],
+    tags: ["React", "Node.js", "Firebase", "TypeScript", "REST APIs"],
   },
   {
     icon: Users,
     title: "Agile Practitioner",
     description: "Proficient in agile methodologies, ensuring streamlined workflows",
-    level: 85,
-    tags: ["Scrum", "Team Lead", "Collaboration"],
+    tags: ["Scrum", "Team Lead", "Collaboration", "Git", "Jira"],
   },
 ];
 
@@ -39,7 +35,7 @@ export const SkillsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24 relative">
+    <section id="skills" className="py-24 relative section-gradient">
       <div className="container mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -62,7 +58,7 @@ export const SkillsSection = () => {
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="glass-card rounded-xl p-6 group hover:border-primary/50 transition-all duration-500"
             >
-              <div className="flex items-start gap-4 mb-4">
+              <div className="flex items-start gap-4 mb-5">
                 <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   <skill.icon size={24} />
                 </div>
@@ -72,22 +68,18 @@ export const SkillsSection = () => {
                 </div>
               </div>
 
-              {/* Skill bar */}
-              <div className="skill-bar mb-4">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={isInView ? { width: `${skill.level}%` } : {}}
-                  transition={{ duration: 1, delay: 0.5 + index * 0.15 }}
-                  className="skill-bar-fill"
-                />
-              </div>
-
-              {/* Tags */}
+              {/* Tags grid */}
               <div className="flex flex-wrap gap-2">
-                {skill.tags.map((tag) => (
-                  <span key={tag} className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                {skill.tags.map((tag, tagIndex) => (
+                  <motion.span
+                    key={tag}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.4 + index * 0.1 + tagIndex * 0.05 }}
+                    className="tech-badge text-xs group-hover:border-primary/50 transition-colors"
+                  >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
