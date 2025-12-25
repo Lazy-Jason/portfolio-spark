@@ -32,7 +32,7 @@ export const HeroSection = () => {
         />
       </div>
 
-      <div className="container mx-auto px-6 pt-24 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 pt-24 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           {/* Text Content */}
           <motion.div
