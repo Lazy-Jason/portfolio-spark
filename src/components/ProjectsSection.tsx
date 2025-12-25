@@ -1,57 +1,88 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Play, Zap } from "lucide-react";
+import { ArrowRight, Play, Zap, Check } from "lucide-react";
 
 const featuredProjects = [
   {
     title: "SLIME SLINGER",
-    description: "A 3rd person Action Adventure game with Sci-Fi – Fantasy theming. Play as a slime and search for your kidnapped mother - absorb leftover DNA to enhance your skills.",
+    role: "Gameplay Programmer",
+    highlights: [
+      "Led core gameplay systems development",
+      "Built modular ability & combat system",
+      "Implemented AI behaviour trees",
+      "Optimized for 60fps on target hardware",
+    ],
     image: "https://img.itch.zone/aW1nLzIxMjA3NzI1LnBuZw==/original/w25n7Q.png",
-    tags: ["Unreal Engine", "Blueprints", "C++"],
+    tags: ["Unreal Engine", "C++", "Blueprints"],
     link: "#",
     featured: true,
-    highlight: "Action Adventure RPG",
+    type: "Action Adventure RPG",
   },
   {
     title: "Frog Wood",
-    description: "A 3D platformer where players embody a tree frog restoring vitality to a desiccated swamp by traversing diverse dimensional realms.",
+    role: "Gameplay Programmer",
+    highlights: [
+      "Designed dimensional traversal mechanics",
+      "Created player movement & physics",
+      "Built environmental interaction system",
+    ],
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800",
     tags: ["Unreal Engine", "Blueprints", "C++"],
     link: "#",
-    highlight: "3D Platformer",
+    type: "3D Platformer",
   },
   {
     title: "MIQUELLA'S END",
-    description: "Inspired by Elden Ring's Malenia boss fight, recreating intricate dodging mechanics and diverse attack patterns with health regeneration.",
+    role: "Solo Developer",
+    highlights: [
+      "Recreated Malenia boss fight mechanics",
+      "Implemented health regen on hit system",
+      "Built complex attack pattern AI",
+    ],
     image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800",
-    tags: ["Unreal Engine", "Blueprints", "C++"],
+    tags: ["Unreal Engine", "C++", "AI"],
     link: "#",
-    highlight: "Boss AI System",
+    type: "Boss AI System",
   },
   {
     title: "NERVE QUEST",
-    description: "A custom quest system for Unreal Engine with visual graph editor for designing quest flows and runtime subsystem for handling progression.",
+    role: "Tools Programmer",
+    highlights: [
+      "Built visual graph editor for designers",
+      "Created runtime quest subsystem",
+      "Enabled non-linear quest flows",
+    ],
     image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=800",
-    tags: ["Unreal Engine", "Blueprints", "C++"],
+    tags: ["Unreal Engine", "Editor Tools", "C++"],
     link: "#",
-    highlight: "Quest System Plugin",
+    type: "Quest System Plugin",
   },
   {
     title: "Generic Dynamic Object Pool",
-    description: "A flexible and efficient object pooling system for Unreal Engine projects, improving performance by reducing spawn overhead.",
+    role: "Tools Programmer",
+    highlights: [
+      "Reduced spawn overhead significantly",
+      "Type-agnostic pool implementation",
+      "Easy integration for any project",
+    ],
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
-    tags: ["Unreal Engine", "Blueprints", "C++"],
+    tags: ["Unreal Engine", "Performance", "C++"],
     link: "#",
-    highlight: "Performance Tool",
+    type: "Performance Tool",
   },
   {
     title: "Nerve Talent Tree",
-    description: "A character progression system featuring a node-based editor for creating multi-stage talent trees with dependencies and requirements.",
+    role: "Systems Programmer",
+    highlights: [
+      "Node-based talent editor for designers",
+      "Multi-stage progression with dependencies",
+      "Save/load talent configurations",
+    ],
     image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800",
-    tags: ["Unreal Engine", "Blueprints", "C++"],
+    tags: ["Unreal Engine", "UI/UX", "C++"],
     link: "#",
-    highlight: "Progression System",
+    type: "Progression System",
   },
 ];
 
@@ -60,61 +91,71 @@ export const ProjectsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="container mx-auto px-6" ref={ref}>
+    <section id="projects" className="py-20 relative">
+      <div className="max-w-[1600px] mx-auto px-6" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">
             <span className="text-gradient">Featured Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Gameplay systems, tools, and complete game experiences built with precision.
-          </p>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
         </motion.div>
 
         {/* Hero Featured Project */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-8"
         >
           <div className="project-card group relative overflow-hidden rounded-2xl">
-            <div className="relative overflow-hidden">
-              <img
-                src={featuredProjects[0].image}
-                alt={featuredProjects[0].title}
-                className="w-full h-64 md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+            <div className="grid lg:grid-cols-2 gap-0">
+              {/* Image side */}
+              <div className="relative overflow-hidden h-64 lg:h-auto">
+                <img
+                  src={featuredProjects[0].image}
+                  alt={featuredProjects[0].title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card lg:block hidden" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent lg:hidden" />
+              </div>
               
-              {/* Content overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 rounded-full bg-primary/20 border border-primary/50 text-primary text-xs font-medium uppercase tracking-wider">
+              {/* Content side */}
+              <div className="p-6 lg:p-10 flex flex-col justify-center bg-card">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="px-2 py-1 rounded-md bg-primary/20 border border-primary/50 text-primary text-xs font-medium uppercase tracking-wider">
                     Featured
                   </span>
-                  <span className="px-3 py-1 rounded-full bg-accent/20 border border-accent/50 text-accent text-xs font-medium">
-                    {featuredProjects[0].highlight}
+                  <span className="px-2 py-1 rounded-md bg-accent/20 border border-accent/50 text-accent text-xs font-medium">
+                    {featuredProjects[0].type}
                   </span>
                 </div>
                 
-                <h3 className="font-display text-3xl md:text-5xl font-bold mb-4 text-foreground">
+                <h3 className="font-display text-2xl lg:text-3xl font-bold mb-1 text-foreground">
                   {featuredProjects[0].title}
                 </h3>
-                
-                <p className="text-muted-foreground text-lg mb-6 max-w-2xl">
-                  {featuredProjects[0].description}
+                <p className="text-primary text-sm font-medium mb-4">
+                  {featuredProjects[0].role}
                 </p>
+                
+                {/* Recruiter-friendly bullet points */}
+                <ul className="space-y-2 mb-5">
+                  {featuredProjects[0].highlights.map((point, i) => (
+                    <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
+                      <Check size={14} className="text-primary mt-0.5 flex-shrink-0" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {featuredProjects[0].tags.map((tag) => (
-                    <span key={tag} className="tech-badge">
+                    <span key={tag} className="tech-badge text-xs">
                       {tag}
                     </span>
                   ))}
@@ -122,11 +163,11 @@ export const ProjectsSection = () => {
                 
                 <a
                   href={featuredProjects[0].link}
-                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all group/btn hover:gap-4"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all group/btn w-fit"
                 >
-                  <Play size={18} className="fill-current" />
-                  See It In Action
-                  <ArrowRight size={18} className="transition-transform group-hover/btn:translate-x-1" />
+                  <Play size={16} className="fill-current" />
+                  Watch In Action
+                  <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
                 </a>
               </div>
             </div>
@@ -134,43 +175,53 @@ export const ProjectsSection = () => {
         </motion.div>
 
         {/* Project Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredProjects.slice(1).map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="project-card group rounded-xl overflow-hidden"
+              transition={{ duration: 0.4, delay: 0.2 + index * 0.08 }}
+              className="project-card group rounded-xl overflow-hidden flex flex-col"
             >
-              <div className="relative overflow-hidden h-48">
+              <div className="relative overflow-hidden h-40">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
                 
-                {/* Highlight badge */}
-                <div className="absolute top-4 left-4">
+                {/* Type badge */}
+                <div className="absolute top-3 left-3">
                   <span className="px-2 py-1 rounded-md bg-accent/90 text-accent-foreground text-xs font-medium flex items-center gap-1">
-                    <Zap size={12} />
-                    {project.highlight}
+                    <Zap size={10} />
+                    {project.type}
                   </span>
                 </div>
               </div>
               
-              <div className="p-6">
-                <h3 className="font-display text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+              <div className="p-5 flex flex-col flex-grow">
+                <h3 className="font-display text-base font-bold mb-0.5 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                  {project.description}
+                <p className="text-primary/80 text-xs font-medium mb-3">
+                  {project.role}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {project.tags.slice(0, 2).map((tag) => (
-                    <span key={tag} className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                {/* Bullet points */}
+                <ul className="space-y-1.5 mb-4 flex-grow">
+                  {project.highlights.map((point, i) => (
+                    <li key={i} className="flex items-start gap-2 text-muted-foreground text-xs">
+                      <Check size={12} className="text-primary mt-0.5 flex-shrink-0" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="text-xs px-2 py-0.5 rounded-md bg-muted text-muted-foreground">
                       {tag}
                     </span>
                   ))}
@@ -180,7 +231,7 @@ export const ProjectsSection = () => {
                   href={project.link}
                   className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors group/link"
                 >
-                  Explore Project
+                  View Details
                   <ArrowRight size={14} className="transition-transform group-hover/link:translate-x-1" />
                 </a>
               </div>

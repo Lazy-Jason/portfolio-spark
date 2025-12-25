@@ -46,25 +46,22 @@ export const ContactSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="py-24 relative section-gradient">
-      <div className="container mx-auto px-6" ref={ref}>
+    <section id="contact" className="py-20 relative section-gradient">
+      <div className="max-w-[1600px] mx-auto px-6" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">
             <span className="text-gradient">Let's Connect</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Feel free to reach out through any of these channels. I'm always open to discussing new opportunities and collaborations.
-          </p>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
         </motion.div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {contactLinks.map((link, index) => (
               <motion.a
                 key={link.label}

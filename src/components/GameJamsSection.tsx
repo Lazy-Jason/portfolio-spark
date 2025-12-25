@@ -32,24 +32,21 @@ export const GameJamsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 relative">
-      <div className="container mx-auto px-6" ref={ref}>
+    <section className="py-20 relative">
+      <div className="max-w-[1600px] mx-auto px-6" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">
             <span className="text-gradient">Game Jams & Personal</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Rapid prototypes and creative experiments from various game jams
-          </p>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-5">
           {gameJams.map((jam, index) => (
             <motion.a
               key={jam.title}
