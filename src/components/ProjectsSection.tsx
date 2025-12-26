@@ -1,90 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Play, Zap, Check } from "lucide-react";
-
-const featuredProjects = [
-  {
-    title: "SLIME SLINGER",
-    role: "Gameplay Programmer",
-    highlights: [
-      "Led core gameplay systems development",
-      "Built modular ability & combat system",
-      "Implemented AI behaviour trees",
-      "Optimized for 60fps on target hardware",
-    ],
-    image: "https://img.itch.zone/aW1nLzIxMjA3NzI1LnBuZw==/original/w25n7Q.png",
-    tags: ["Unreal Engine", "C++", "Blueprints"],
-    link: "#",
-    featured: true,
-    type: "Action Adventure RPG",
-  },
-  {
-    title: "Frog Wood",
-    role: "Gameplay Programmer",
-    highlights: [
-      "Designed dimensional traversal mechanics",
-      "Created player movement & physics",
-      "Built environmental interaction system",
-    ],
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800",
-    tags: ["Unreal Engine", "Blueprints", "C++"],
-    link: "#",
-    type: "3D Platformer",
-  },
-  {
-    title: "MIQUELLA'S END",
-    role: "Solo Developer",
-    highlights: [
-      "Recreated Malenia boss fight mechanics",
-      "Implemented health regen on hit system",
-      "Built complex attack pattern AI",
-    ],
-    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800",
-    tags: ["Unreal Engine", "C++", "AI"],
-    link: "#",
-    type: "Boss AI System",
-  },
-  {
-    title: "NERVE QUEST",
-    role: "Tools Programmer",
-    highlights: [
-      "Built visual graph editor for designers",
-      "Created runtime quest subsystem",
-      "Enabled non-linear quest flows",
-    ],
-    image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=800",
-    tags: ["Unreal Engine", "Editor Tools", "C++"],
-    link: "#",
-    type: "Quest System Plugin",
-  },
-  {
-    title: "Generic Dynamic Object Pool",
-    role: "Tools Programmer",
-    highlights: [
-      "Reduced spawn overhead significantly",
-      "Type-agnostic pool implementation",
-      "Easy integration for any project",
-    ],
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
-    tags: ["Unreal Engine", "Performance", "C++"],
-    link: "#",
-    type: "Performance Tool",
-  },
-  {
-    title: "Nerve Talent Tree",
-    role: "Systems Programmer",
-    highlights: [
-      "Node-based talent editor for designers",
-      "Multi-stage progression with dependencies",
-      "Save/load talent configurations",
-    ],
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800",
-    tags: ["Unreal Engine", "UI/UX", "C++"],
-    link: "#",
-    type: "Progression System",
-  },
-];
+import { featuredProjects } from "@/data/projects";
 
 export const ProjectsSection = () => {
   const ref = useRef(null);
@@ -161,14 +80,14 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
                 
-                <a
-                  href={featuredProjects[0].link}
+                <Link
+                  to={`/project/${featuredProjects[0].id}`}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all group/btn w-fit"
                 >
                   <Play size={16} className="fill-current" />
-                  Watch In Action
+                  See It In Action
                   <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -227,13 +146,13 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
                 
-                <a
-                  href={project.link}
+                <Link
+                  to={`/project/${project.id}`}
                   className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors group/link"
                 >
-                  View Details
+                  See It In Action
                   <ArrowRight size={14} className="transition-transform group-hover/link:translate-x-1" />
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
