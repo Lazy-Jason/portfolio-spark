@@ -75,16 +75,56 @@ export const HeroSection = () => {
               Creating immersive game experiences with Unreal Engine & Unity.
             </motion.p>
 
+            {/* Epic Game Callout */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.75 }}
-              className="flex items-center gap-3 justify-center lg:justify-start mb-8"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.75, type: "spring", stiffness: 100 }}
+              className="relative mb-8 group cursor-default"
             >
-              <span className="text-muted-foreground text-sm">Currently obsessed with</span>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/40 bg-accent/5 hover:bg-accent/10 hover:border-accent/60 transition-all duration-300 group">
-                <span className="text-accent font-medium text-sm group-hover:text-accent-foreground transition-colors">ELDEN RING</span>
-                <span className="text-base group-hover:animate-pulse">⚔️</span>
+              <div className="relative flex items-center gap-4 justify-center lg:justify-start">
+                {/* Glowing sword icon */}
+                <motion.div
+                  animate={{ 
+                    rotate: [0, -5, 5, 0],
+                    filter: ["drop-shadow(0 0 8px hsl(var(--accent)))", "drop-shadow(0 0 16px hsl(var(--accent)))", "drop-shadow(0 0 8px hsl(var(--accent)))"]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="text-3xl"
+                >
+                  ⚔️
+                </motion.div>
+                
+                {/* Title treatment */}
+                <div className="relative">
+                  <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground block mb-1">
+                    Currently Obsessed
+                  </span>
+                  <motion.span 
+                    className="font-display text-2xl md:text-3xl font-bold tracking-wider"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent)) 100%)",
+                      backgroundSize: "200% auto",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                    animate={{
+                      backgroundPosition: ["0% center", "200% center"],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  >
+                    ELDEN RING
+                  </motion.span>
+                </div>
+
+                {/* Decorative line */}
+                <motion.div 
+                  className="hidden lg:block h-[2px] flex-1 max-w-24 bg-gradient-to-r from-accent/60 to-transparent"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                />
               </div>
             </motion.div>
 
