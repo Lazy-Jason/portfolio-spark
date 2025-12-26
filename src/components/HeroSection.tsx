@@ -70,12 +70,23 @@ export const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
-              className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 mb-8"
+              className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 mb-4"
             >
               Creating immersive game experiences with Unreal Engine & Unity.
-              <br />
-              <span className="text-accent">My favorite game? ELDEN RING 🗡️</span>
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75 }}
+              className="flex items-center gap-3 justify-center lg:justify-start mb-8"
+            >
+              <span className="text-muted-foreground text-sm">Currently obsessed with</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/40 bg-accent/5 hover:bg-accent/10 hover:border-accent/60 transition-all duration-300 group">
+                <span className="text-accent font-medium text-sm group-hover:text-accent-foreground transition-colors">ELDEN RING</span>
+                <span className="text-base group-hover:animate-pulse">⚔️</span>
+              </div>
+            </motion.div>
 
             {/* Social Links */}
             <motion.div
